@@ -9,10 +9,10 @@ else
   SQL_QUERY=""
   
   if [[ $1 =~ ^[0-9]+$ ]]; then
-    # Input is numeric, query by atomic number
+    
     SQL_QUERY="SELECT atomic_number, atomic_mass, melting_point_celsius, boiling_point_celsius, symbol, name, type FROM properties JOIN elements USING(atomic_number) JOIN types USING(type_id) WHERE atomic_number = $1"
   else
-    # Input is not numeric, query by symbol or name
+    
     SQL_QUERY="SELECT atomic_number, atomic_mass, melting_point_celsius, boiling_point_celsius, symbol, name, type FROM properties JOIN elements USING(atomic_number) JOIN types USING(type_id) WHERE symbol ILIKE '$1' OR name ILIKE '$1'"
   fi
 
@@ -27,4 +27,3 @@ else
     done
   fi
 fi
-
