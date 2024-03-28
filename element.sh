@@ -14,9 +14,9 @@ if [[ $1 ]]
     then 
       echo "I could not find that element in the database."
   else
-    echo $ELEMENT | while read ATOMIC_NUMBER
+    echo $ELEMENT | while IFS=\| read ATOMIC_NUMBER ATOMIC_MAS
     do
-      echo $ATOMIC_NUMBER
+      echo "$ATOMIC_NUMBER - $ATOMIC_MAS"
     done
 
   fi
